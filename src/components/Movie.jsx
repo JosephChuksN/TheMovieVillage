@@ -38,7 +38,7 @@ const Movie = () => {
 
 const fetchMovieDetails = async () =>{
     try {
-      const data = await axios.get(`https://api.themoviedb.org/3/movie/${params.movieId}?api_key=6f71e11ddfecc154f3f6f2f4b8f369b2`)
+      const data = await axios.get(`${process.env.REACT_APP_API_URL_DETAILS}${params.movieId}?api_key=${process.env.REACT_APP_API_KEY}`)
       dispatch(setSelectedMovie(data.data))
 
     } catch (error) {
