@@ -6,6 +6,10 @@ module.exports = {
 
   theme: {
     extend: {
+      fontFamily:{
+        poppins: ['Poppins', 'sans-serif'],
+        
+      },
       gridTemplateColumns:{
         fluid: "repeat(auto-fit, minmax(15rem,1fr))"
       }

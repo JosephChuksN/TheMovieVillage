@@ -57,8 +57,8 @@ const fetchMovieDetails = async () =>{
 
     
   return (
-    <div className="lg:w-4/5 w-full lg:items-start items-center lg:py-20 lg:px-5 px-3 py-1 mx-auto h-[100vh flex lg:flex-row flex-col lg:gap-16 ">
-      <img className="lg:w-96 lg:h-[65%] lg:rounded-xl h-[45%]"
+    <div className="lg:w-4/5 w-full lg:items-start items-center lg:py-10 lg:px-5 px-3 py-1 mx-auto h-[100vh flex lg:flex-row flex-col lg:gap-16 ">
+      <img className="lg:w-96 lg:h-[65%] lg:rounded-xl h-[45%] rounded "
       src={`https://image.tmdb.org/t/p/original${poster_path}`} 
       alt={movie.original_tittle} 
       />
@@ -76,7 +76,7 @@ const fetchMovieDetails = async () =>{
           ))}</span>
         </div>
         <span className="text-gray-100 flex flex-col gap-2">
-          <span className="text-2xl font-medium ">Overview</span>
+          <span className="lg:text-2xl font-medium text-lg ">Overview</span>
           <span className="lg:text-base text-sm">{overview}</span>
         </span>
         
