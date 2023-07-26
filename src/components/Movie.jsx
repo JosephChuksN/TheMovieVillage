@@ -58,7 +58,7 @@ const fetchMovieDetails = async () =>{
     
   return (
     <div className="lg:w-4/5 w-full lg:items-start items-center lg:py-10 lg:px-5 px-3 py-1 mx-auto h-[100vh flex lg:flex-row flex-col lg:gap-16 ">
-      <img className="lg:w-96 lg:h-[65%] lg:rounded-xl min-h-[45%] rounded "
+      <img className="lg:w-96 lg:h-[65%] lg:rounded-xl lg:min-h-auto min-h-[35%] rounded "
       src={`https://image.tmdb.org/t/p/original${poster_path}`} 
       alt={movie.original_tittle} 
       />
