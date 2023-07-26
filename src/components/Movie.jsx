@@ -68,8 +68,8 @@ const fetchMovieDetails = async () =>{
           <span className="text-gray-400 flex items-center">
             {tagline || title}
           </span>
-          <span className="flex gap-2">{genres?.map((genre)=>(
-            <span className="text-white px-2 py3 bg-[#0047AB] shadow-md font-medium shadow-[#0047AB] rounded-lg"
+          <span className="flex flex-wrap gap-2">{genres?.map((genre)=>(
+            <span className="text-white px-2.5  lg:px-2 py3 bg-[#0047AB] shadow-md text-sm lg:text-base font-medium shadow-[#0047AB] rounded-lg"
             key={genre.id}>
               {genre.name}
             </span>
