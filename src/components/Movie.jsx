@@ -62,10 +62,6 @@ const fetchMovieDetails = async () =>{
       src={`https://image.tmdb.org/t/p/original${poster_path}`} 
       alt={movie.original_tittle} 
       />
-      <img className="lg:w-96 lg:h-[65%] lg:rounded-xl min-h-[45%] rounded lg:hidden "
-      src={`https://image.tmdb.org/t/p/original${poster_path}`} 
-      alt={movie.original_tittle} 
-      />
       <div className="lg:w-4/5  w-full flex flex-col gap-3 lg:gap-10">
         <div className="w-full flex flex-col  lg:gap-2">
           <span className="lg:text-3xl text-xl text-white font-bold">{original_title}</span>
