@@ -57,19 +57,19 @@ const fetchMovieDetails = async () =>{
 
     
   return (
-    <div className="w-4/5 py-20 px-5 mx-auto h-[100vh flex gap-16 ">
-      <img className="w-96 h-[65%] rounded-xl"
+    <div className="lg:w-4/5 w-full lg:items-start items-center lg:py-20 lg:px-5 px-3 py-1 mx-auto h-[100vh flex lg:flex-row flex-col lg:gap-16 ">
+      <img className="lg:w-96 lg:h-[65%] lg:rounded-xl h-[45%]"
       src={`https://image.tmdb.org/t/p/original${poster_path}`} 
       alt={movie.original_tittle} 
       />
-      <div className="w-4/5 flex lg:flex-col gap-10">
-        <div className="w-full flex flex-col gap-2">
-          <span className="text-3xl text-white font-semibold">{original_title}</span>
-          <span className="text-gray-400 flex items-center gap-5">
+      <div className="lg:w-4/5  w-full flex flex-col gap-3 lg:gap-10">
+        <div className="w-full flex flex-col  lg:gap-2">
+          <span className="lg:text-3xl text-xl text-white font-bold">{original_title}</span>
+          <span className="text-gray-400 flex items-center">
             {tagline || title}
           </span>
           <span className="flex gap-2">{genres?.map((genre)=>(
-            <span className="text-white px-2 py3 bg-[#0047AB] shadow-md shadow-[#0047AB] rounded-lg"
+            <span className="text-white px-2 py3 bg-[#0047AB] shadow-md font-medium shadow-[#0047AB] rounded-lg"
             key={genre.id}>
               {genre.name}
             </span>
@@ -77,10 +77,10 @@ const fetchMovieDetails = async () =>{
         </div>
         <span className="text-gray-100 flex flex-col gap-2">
           <span className="text-2xl font-medium ">Overview</span>
-          <span>{overview}</span>
+          <span className="lg:text-base text-sm">{overview}</span>
         </span>
         
-        <div className="text-white flex items-center gap-5 pb-3 border-b-[1px] border-gray-600">
+        <div className="text-white flex-wrap flex items-center gap-2 lg:gap-5 pb-3 border-b-[1px] text-sm lg:text-base border-gray-600">
           <span className="flex gap-2 items-center">
             <span>Status:</span>
             <span className="text-gray-400">{status}</span>
