@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setSelectedMovie } from '../redux/actions'
 import { removeSelectedMovie } from '../redux/actions'
 import axios from 'axios'
+import MovieDetails from './MovieDetails'
 
 const Movie = () => {
     
@@ -19,8 +20,6 @@ const Movie = () => {
     tagline,
     vote_average,
     runtime,
-    vote_count,
-    popularity ,
     overview,
     genres      
    } = movie
@@ -70,33 +69,26 @@ const fetchMovieDetails = async () =>{
           </span>
           <span className="flex flex-wrap gap-2">{genres?.map((genre)=>(
             <span className="text-white px-2.5  lg:px-2 py3 bg-[#0047AB] shadow-md text-sm lg:text-base font-medium shadow-[#0047AB] rounded-lg"
-            key={genre.id}>
-              {genre.name}
+             key={genre.id}>
+             {genre.name}
             </span>
-          ))}</span>
+        ))}</span>
         </div>
         <span className="text-gray-100 flex flex-col gap-2">
           <span className="lg:text-2xl font-medium text-lg ">Overview</span>
           <span className="lg:text-base text-sm">{overview}</span>
         </span>
         
-        <div className="text-white flex-wrap flex items-center gap-2 lg:gap-5 pb-3 border-b-[1px] text-sm lg:text-base border-gray-600">
-          <span className="flex gap-2 items-center">
-            <span>Status:</span>
-            <span className="text-gray-400">{status}</span>
-          </span>
-          <span className="flex gap-2 items-center">
-            <span>Released:</span>
-            <span className="text-gray-400">{`${month} ${day}, ${year}`}</span>
-          </span>
-          <span className="px-1 py-0.5 text-gray-100 font-bold text-md border border-gray-100 rounded">{`${!adult? "13+" : "18+" }`}</span>
-          <span className="flex gap-2 items-center">
-            <span>Runtime:</span>
-            <span className="text-gray-400">{`${Math.trunc(hours)}hr ${minutes}min`}</span>
-          </span>
-          <span className="px-1.5 py-0.5 text-black font-bold text-md  bg-gray-100 rounded">{rating?.slice(0,3)}</span>
-         
-        </div>
+       <MovieDetails 
+        status={status}
+        year={year}
+        month={month}
+        day={day}
+        rating={rating}
+        hours={hours}
+        adult={adult}
+        minutes={minutes}
+       />
       </div>
     </div>
   )

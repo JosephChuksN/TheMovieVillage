@@ -1,4 +1,4 @@
-import MovieList from "./components/MovieList";
+import MovieList from "./Pages/MovieList";
 import Movie from "./components/Movie";
 import { Routes, Route } from "react-router-dom";
 

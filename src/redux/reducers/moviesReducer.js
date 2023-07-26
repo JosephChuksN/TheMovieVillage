@@ -27,3 +27,15 @@ export const selectedMovieReducer = (state = { }, {type, payLoad})=>{
           return  state
     }
 }
+
+export const genresReducer = (state = {}, {type, payLoad}) =>{
+       
+     switch (type) {
+        case actionTypes.SET_MOVIE_GENRES:
+               return {...state, ...payLoad}
+           
+     
+        default:
+            return state
+     }
+}
