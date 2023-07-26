@@ -55,7 +55,7 @@ const MovieList = () => {
     <>
     <Header />
     {Object.keys(movies).length === 0? (
-      <div className="w-full flex items-center justify-center h-full my-auto lg:w-4/5 translate-y-10 lg:translate-y-32 mx-auto ">
+      <div className="w-full flex items-center justify-center h-[70vh] my-auto lg:w-4/5 translate-y-10 lg:translate-y-32 mx-auto ">
          <p className="animate-bounce text-white text-xl">Loading...</p>
        
       </div>
