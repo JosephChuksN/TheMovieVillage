@@ -9,7 +9,8 @@ const MovieDetails = ({
     adult,
     hours,
     rating,
-    minutes
+    minutes,
+    spoken_languages
 }) => {
   return (
     <div  className="text-white flex-wrap flex items-center gap-2 lg:gap-5 pb-3 border-b-[1px] text-sm lg:text-base border-gray-600">
@@ -27,6 +28,12 @@ const MovieDetails = ({
       <span className="text-gray-400">{`${Math.trunc(hours)}hr ${minutes}min`}</span>
     </span>
     <span className="px-1.5 py-0.5 text-black font-bold text-md  bg-gray-100 rounded">{rating?.slice(0,3)}</span>
+    <span className="flex gap-2 items-center">
+      <span>Languages:</span>
+      <span className="text-gray-400 flex flex-wrap items-center gap-1">{spoken_languages?.map((lang)=>(
+         <span key={lang.name}>{lang.english_name}</span>
+      ))}</span>
+    </span>
    
   </div>
   )

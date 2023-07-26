@@ -21,7 +21,8 @@ const Movie = () => {
     vote_average,
     runtime,
     overview,
-    genres      
+    genres,
+    spoken_languages     
    } = movie
   const dispatch = useDispatch()
   const params = useParams()
@@ -88,6 +89,7 @@ const fetchMovieDetails = async () =>{
         hours={hours}
         adult={adult}
         minutes={minutes}
+        spoken_languages={spoken_languages}
        />
       </div>
     </div>
