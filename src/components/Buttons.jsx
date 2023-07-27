@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Buttons = ({next, page, previous, movies}) => {
+const Buttons = ({next, page, previous}) => {
 
   
   return (
@@ -11,9 +11,9 @@ const Buttons = ({next, page, previous, movies}) => {
     >
       Previous
     </button>
-    <button  className={`bg-[#0047AB] ${page === 10 && movies.length < 20? "bg-[#0047AB]/50 text-white/50 " : "hover:scale-105"} p-2 w-32 rounded-lg shadow-md shadow-[#0047AB] transition-all duration-300 ease-in-out`}
+    <button  className={`bg-[#0047AB] ${page === 10? "bg-[#0047AB]/50 text-white/50 " : "hover:scale-105"} p-2 w-32 rounded-lg shadow-md shadow-[#0047AB] transition-all duration-300 ease-in-out`}
      onClick={next}
-     disabled={page === 10 && movies.length < 20}
+     disabled={page === 10 }
     >
       Next
     </button>

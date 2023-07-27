@@ -91,7 +91,6 @@ const MovieList = () => {
        page={page}
        next={next}
        previous={previous}
-       movies={movies}
       />
       { movies.map(details => {
        const {id, original_title, title,  poster_path, release_date} = details
@@ -117,7 +116,6 @@ const MovieList = () => {
        page={page}
        next={next}
        previous={previous}
-       movies={movies}
        /> 
       
     </div>
