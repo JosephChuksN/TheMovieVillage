@@ -26,3 +26,23 @@ export const setMovieGenre = (genres) =>{
         payLoad : genres
     }
 }
+
+export const setSelectedMovieGenre = (selectedGenre)=>{
+    return {
+        type: actionTypes.SELECTED_GENRES,
+        payLoad: selectedGenre
+    }
+}
+export const removeSelectedGenres = (removedGenres)=>{
+    return {
+        type: actionTypes.REMOVE_SELECTED_GENRE,
+        payLoad : removedGenres
+    }
+}
+
+export const addRemoveSelectedGenres = (removedGenres)=>{
+    return {
+        type: actionTypes.ADD_REMOVE_SELECTED_GENRE,
+        payLoad : removedGenres
+    }
+}

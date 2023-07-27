@@ -6,6 +6,11 @@ import Header from '../components/Header'
 import MovieContainer from '../components/MovieContainer'
 import Buttons from '../components/Buttons'
 import MovieGenre from '../components/MovieGenre'
+import { setSelectedMovieGenre } from '../redux/actions'
+import { addRemoveSelectedGenres } from '../redux/actions'
+import { removeSelectedGenres } from '../redux/actions'
+import { setMovieGenre } from '../redux/actions'
+import useGenre from '../hook/useGenre'
 
 
 
@@ -13,9 +18,30 @@ import MovieGenre from '../components/MovieGenre'
 
 const MovieList = () => {
     const movies = useSelector((state)=> state.allMovies.movies)
+    const selectedGenre = useSelector((state)=> state.selectedGenres)
+    const { gen } = selectedGenre
     const dispatch = useDispatch()
     const [page, setPage] = useState(1)
-    const genreURL =""
+    const genreURL = useGenre(gen)
+    
+
+
+    const addGenre =  (genr, gen)=>{
+
+     
+      dispatch(setSelectedMovieGenre(gen))
+      const result = genr.filter(genre=>( genre.id !== gen.id))
+
+      dispatch(setMovieGenre(result))
+
+      console.log(genreURL)
+    }
+
+    // const removeGenre = (genr, gen)=>{
+    //   dispatch(addRemoveSelectedGenres(gen))
+    //   const result = genr.filter(genre=>( genre.id !== gen.id))
+    //   dispatch(setSelectedMovieGenre(result))
+    // }
 
     const previous = () => {
       if (page !== 1) {
@@ -48,24 +74,29 @@ const MovieList = () => {
 
     useEffect(()=>{
       fetchedMovies()
-    },[page])
+    },[page, genreURL])
 
 
   return (
     <>
     <Header />
+    <MovieGenre
+        selectedGenre={selectedGenre}
+        addGenre={addGenre}
+        // removeGenre={removeGenre}
+      />
     {Object.keys(movies).length === 0? (
       <div className="w-full flex items-center justify-center h-[70vh] my-auto lg:w-4/5 translate-y-10 lg:translate-y-32 mx-auto ">
          <p className="animate-bounce text-white text-xl">Loading...</p>
        
       </div>
     ): (
-      <div className="w-full lg:w-4/5 translate-y-10 lg:translate-y-16 gap-5 lg:gap-2 lg:py-10 lg:justify-between items-center justify-center  mx-auto flex flex-wrap">
-      <MovieGenre />
+      <div className="w-full lg:w-4/5 translate-y-10 lg:translate-y-20 gap-5 lg:gap-2 lg:py-10 lg:justify-between items-center justify-center  mx-auto flex flex-wrap">
       <Buttons 
        page={page}
        next={next}
        previous={previous}
+       movies={movies}
       />
       { movies.map(details => {
        const {id, original_title, title,  poster_path, release_date} = details
@@ -91,6 +122,7 @@ const MovieList = () => {
        page={page}
        next={next}
        previous={previous}
+       movies={movies}
        /> 
     </div>
     )}

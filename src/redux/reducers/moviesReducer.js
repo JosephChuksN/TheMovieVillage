@@ -4,6 +4,15 @@ import { actionTypes } from "../actionTypes";
 const initialState = {
     movies:[]
 }
+const initialGenreState = {
+
+    genre:[]
+}
+
+const initialSelectedGenreState = {
+
+    gen:[]
+}
 
 export const  moviesReducers = (state = initialState, {type, payLoad}) =>{
 
@@ -28,14 +37,37 @@ export const selectedMovieReducer = (state = { }, {type, payLoad})=>{
     }
 }
 
-export const genresReducer = (state = {}, {type, payLoad}) =>{
+export const genresReducer = (state = initialGenreState, {type, payLoad}) =>{
        
      switch (type) {
         case actionTypes.SET_MOVIE_GENRES:
-               return {...state, ...payLoad}
-           
+               return {...state, genre:payLoad}
+
+        case actionTypes.ADD_REMOVE_SELECTED_GENRE:
+            return {...state, genre: payLoad}
      
         default:
             return state
      }
 }
+
+export const selectedGenresReducer = (state = initialSelectedGenreState, {type, payLoad})=>{
+
+    switch (type) {
+        case actionTypes.SELECTED_GENRES:
+             return {...state, 
+              gen:[...state.gen, payLoad]
+
+            }
+    
+        default:
+            return state
+    }
+
+    
+}
+
+
+// case actionTypes.REMOVE_SELECTED_GENRE:
+//     const result = state.genre.filter(gen=>{ return ( gen.id !== payLoad.id)})
+//       return {...state, genre: result }
