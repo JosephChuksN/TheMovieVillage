@@ -68,4 +68,4 @@ export const selectedGenresReducer = (state = initialSelectedGenreState, {type, 
     
 }
 
-     return {...state, genre: result }
+
