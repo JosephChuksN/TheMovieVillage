@@ -55,10 +55,7 @@ const MovieList = () => {
     const fetchedMovies = async () =>{
 
      try {
-      const data = await axios.get(`${process.env.REACT_APP_API_URL}
-      api_key=${process.env.REACT_APP_API_KEY}
-      ${process.env.REACT_APP_API_URL_DESCRIPTION}
-      ${page}&with_genres=${genreURL}`)
+      const data = await axios.get(`${process.env.REACT_APP_API_URL}api_key=${process.env.REACT_APP_API_KEY}${process.env.REACT_APP_API_URL_DESCRIPTION}${page}&with_genres=${genreURL}`)
    
       dispatch(setMovies(data.data.results))
       
