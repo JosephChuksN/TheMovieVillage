@@ -2,7 +2,7 @@ import { createStore } from "redux";
 import reducers from "./reducers";
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' 
-import ReduxThunk from "redux-thunk"
+
 
 
 const persistConfig = {
