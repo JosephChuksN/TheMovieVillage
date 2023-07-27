@@ -1,5 +1,6 @@
 import { actionTypes } from "../actionTypes"
 
+//actions to set states
 
 export const setMovies = (movies) =>{
     return {
@@ -37,12 +38,5 @@ export const clearSelectedGenres = ()=>{
     return {
         type: actionTypes.CLEAR_SELECTED_GENRE,
         
-    }
-}
-
-export const addRemoveSelectedGenres = (removedGenres)=>{
-    return {
-        type: actionTypes.ADD_REMOVE_SELECTED_GENRE,
-        payLoad : removedGenres
     }
 }

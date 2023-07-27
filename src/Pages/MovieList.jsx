@@ -16,26 +16,27 @@ import useGenre from '../hook/useGenre'
 
 
 const MovieList = () => {
+
+    //states
     const movies = useSelector((state)=> state.allMovies.movies)
     const selectedGenre = useSelector((state)=> state.selectedGenres.gen)
-    
     const dispatch = useDispatch()
     const [page, setPage] = useState(1)
     const genreURL = useGenre(selectedGenre)
     
 
-
+   //adds a selected genre to filter movies
     const addGenre =  (genr, gen)=>{
       dispatch(setSelectedMovieGenre(gen))
       const result = genr.filter(genre=>( genre.id !== gen.id))
       dispatch(setMovieGenre(result))
       
     }
-
+   //clears selected genres
    const clearGenre = ()=>{
       dispatch(clearSelectedGenres())
    }
-
+    //go to previous page
     const previous = () => {
       if (page !== 1) {
         setPage(page - 1);
@@ -43,14 +44,14 @@ const MovieList = () => {
         setPage(page);
       }
     };
-
+     //next page
     const next = () => {
       if (page < 10) {
         setPage(page + 1);
       }
     };
 
-
+   //fetch movies
     const fetchedMovies = async () =>{
 
      try {

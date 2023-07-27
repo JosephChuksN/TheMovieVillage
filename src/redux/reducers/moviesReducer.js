@@ -68,7 +68,4 @@ export const selectedGenresReducer = (state = initialSelectedGenreState, {type, 
     
 }
 
-
-// case actionTypes.REMOVE_SELECTED_GENRE:
-//     const result = state.genre.filter(gen=>{ return ( gen.id !== payLoad.id)})
-//       return {...state, genre: result }
+     return {...state, genre: result }
