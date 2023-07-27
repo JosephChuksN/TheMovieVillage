@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="font-poppins">
+    <div className="font-poppins relative">
       <Routes>
       <Route index exact element={<MovieList />} />
       <Route path="movie/:movieId" exact element={<Movie />} />

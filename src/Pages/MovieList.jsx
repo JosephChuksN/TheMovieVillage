@@ -7,8 +7,7 @@ import MovieContainer from '../components/MovieContainer'
 import Buttons from '../components/Buttons'
 import MovieGenre from '../components/MovieGenre'
 import { setSelectedMovieGenre } from '../redux/actions'
-import { addRemoveSelectedGenres } from '../redux/actions'
-import { removeSelectedGenres } from '../redux/actions'
+import { clearSelectedGenres } from '../redux/actions'
 import { setMovieGenre } from '../redux/actions'
 import useGenre from '../hook/useGenre'
 
@@ -18,30 +17,24 @@ import useGenre from '../hook/useGenre'
 
 const MovieList = () => {
     const movies = useSelector((state)=> state.allMovies.movies)
-    const selectedGenre = useSelector((state)=> state.selectedGenres)
-    const { gen } = selectedGenre
+    const selectedGenre = useSelector((state)=> state.selectedGenres.gen)
+    
     const dispatch = useDispatch()
     const [page, setPage] = useState(1)
-    const genreURL = useGenre(gen)
+    const genreURL = useGenre(selectedGenre)
     
 
 
     const addGenre =  (genr, gen)=>{
-
-     
       dispatch(setSelectedMovieGenre(gen))
       const result = genr.filter(genre=>( genre.id !== gen.id))
-
       dispatch(setMovieGenre(result))
-
-      console.log(genreURL)
+      
     }
 
-    // const removeGenre = (genr, gen)=>{
-    //   dispatch(addRemoveSelectedGenres(gen))
-    //   const result = genr.filter(genre=>( genre.id !== gen.id))
-    //   dispatch(setSelectedMovieGenre(result))
-    // }
+   const clearGenre = ()=>{
+      dispatch(clearSelectedGenres())
+   }
 
     const previous = () => {
       if (page !== 1) {
@@ -61,7 +54,10 @@ const MovieList = () => {
     const fetchedMovies = async () =>{
 
      try {
-      const data = await axios.get(`${process.env.REACT_APP_API_URL}api_key=${process.env.REACT_APP_API_KEY}${process.env.REACT_APP_API_URL_DESCRIPTION}${page}&with_genres=${genreURL}`)
+      const data = await axios.get(`${process.env.REACT_APP_API_URL}
+      api_key=${process.env.REACT_APP_API_KEY}
+      ${process.env.REACT_APP_API_URL_DESCRIPTION}
+      ${page}&with_genres=${genreURL}`)
    
       dispatch(setMovies(data.data.results))
       
@@ -83,6 +79,7 @@ const MovieList = () => {
     <MovieGenre
         selectedGenre={selectedGenre}
         addGenre={addGenre}
+        clearGenre={clearGenre}
         // removeGenre={removeGenre}
       />
     {Object.keys(movies).length === 0? (
@@ -91,7 +88,7 @@ const MovieList = () => {
        
       </div>
     ): (
-      <div className="w-full lg:w-4/5 translate-y-10 lg:translate-y-20 gap-5 lg:gap-2 lg:py-10 lg:justify-between items-center justify-center  mx-auto flex flex-wrap">
+      <div className="w-full lg:w-4/5 translate-y-20 lg:translate-y-28 gap-5 lg:gap-2 lg:py-10 lg:justify-between items-center justify-center  mx-auto flex flex-wrap">
       <Buttons 
        page={page}
        next={next}
@@ -124,8 +121,17 @@ const MovieList = () => {
        previous={previous}
        movies={movies}
        /> 
+      
     </div>
     )}
+     <span 
+       className={`${selectedGenre < 1? "opacity-[0]" : "opacity-100" } lg:text-base font-medium text-sm px-3 py-1 cursor-pointer
+        bg-red-600 shadow-md shadow-red-400 transition-all duration-500 ease-in-out hover:scale-105
+         hover:shadow-red-600 text-white rounded-xl absolute top-24 lg:top-24 right-2 lg:right-40`}
+       onClick={()=> clearGenre()}
+       >
+        Clear Genre
+       </span>
     </>
   )
 }

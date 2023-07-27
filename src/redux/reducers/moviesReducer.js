@@ -57,8 +57,9 @@ export const selectedGenresReducer = (state = initialSelectedGenreState, {type, 
         case actionTypes.SELECTED_GENRES:
              return {...state, 
               gen:[...state.gen, payLoad]
-
             }
+        case actionTypes.CLEAR_SELECTED_GENRE:
+            return  initialSelectedGenreState
     
         default:
             return state

@@ -33,10 +33,10 @@ export const setSelectedMovieGenre = (selectedGenre)=>{
         payLoad: selectedGenre
     }
 }
-export const removeSelectedGenres = (removedGenres)=>{
+export const clearSelectedGenres = ()=>{
     return {
-        type: actionTypes.REMOVE_SELECTED_GENRE,
-        payLoad : removedGenres
+        type: actionTypes.CLEAR_SELECTED_GENRE,
+        
     }
 }
 
