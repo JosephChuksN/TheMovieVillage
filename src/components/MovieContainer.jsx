@@ -20,4 +20,4 @@ const MovieContainer = ({id, poster_path, original_title, title, year, month, da
   )
 }
 
-export default MovieContainer
+export default MovieContainer;

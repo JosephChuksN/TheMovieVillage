@@ -29,7 +29,7 @@ const MovieGenre = ({ selectedGenre, addGenre, clearGenre}) => {
   return (
     <div className="flex flex-wrap gap-1.5 translate-y-20 lg:translate-y-32  px-0.5 lg:gap-5 text-gray-100 lg:py-5 lg:w-4/5 justify-center items-center mx-auto ">
        {selectedGenre && selectedGenre.map((selected)=>(
-        <span className="px-2 py-1 bg-[#0047AB] mx-0.5 my-0.5 lg:m-0 rounded-2xl shadow-sm text-sm lg:text-base shadow-[#0047AB]"
+        <span key={selected.id} className="px-2 py-1 bg-[#0047AB] mx-0.5 my-0.5 lg:m-0 rounded-2xl shadow-sm text-sm lg:text-base shadow-[#0047AB]"
         >
             {selected.name}
         </span>

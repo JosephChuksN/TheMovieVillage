@@ -78,7 +78,6 @@ const MovieList = () => {
         selectedGenre={selectedGenre}
         addGenre={addGenre}
         clearGenre={clearGenre}
-        // removeGenre={removeGenre}
       />
     {Object.keys(movies).length === 0? (
       <div className="w-full flex items-center justify-center h-[70vh] my-auto lg:w-4/5 translate-y-10 lg:translate-y-32 mx-auto ">
@@ -91,6 +90,7 @@ const MovieList = () => {
        page={page}
        next={next}
        previous={previous}
+       movies={movies}
       />
       { movies.map(details => {
        const {id, original_title, title,  poster_path, release_date} = details
@@ -116,6 +116,7 @@ const MovieList = () => {
        page={page}
        next={next}
        previous={previous}
+       movies={movies}
        /> 
       
     </div>

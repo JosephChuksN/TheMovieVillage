@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setSelectedMovie } from '../redux/actions'
 import { removeSelectedMovie } from '../redux/actions'
 import axios from 'axios'
 import MovieDetails from '../components/MovieDetails'
+import arrowLeft from '../assets/arrowleft.svg'
 
 const Movie = () => {
     
@@ -47,7 +49,7 @@ const fetchMovieDetails = async () =>{
   }
   useEffect(()=>{
     fetchMovieDetails()
-    console.log(movie)
+    
 
     return ()=>{
       dispatch(removeSelectedMovie())
@@ -57,7 +59,9 @@ const fetchMovieDetails = async () =>{
 
     
   return (
-    <div className="lg:w-4/5 w-full lg:items-start items-center lg:py-10 lg:px-5 px-3 py-1 mx-auto h-[100vh] flex lg:flex-row flex-col lg:gap-16 ">
+    <>
+    {movie? (
+      <div className="lg:w-4/5 w-full lg:items-start items-center lg:py-10 lg:px-5 px-3 py-1 mx-auto h-[100vh] flex lg:flex-row flex-col lg:gap-16 ">
       <img className="lg:w-96 w-full lg:h-[85%] lg:rounded-xl lg:min-h-auto min-h-[55%] rounded "
       src={`https://image.tmdb.org/t/p/original${poster_path}`} 
       alt={movie.original_tittle} 
@@ -93,6 +97,19 @@ const fetchMovieDetails = async () =>{
        />
       </div>
     </div>
+    ) : (
+      <div className="w-full flex items-center justify-center h-[70vh] my-auto lg:w-4/5 translate-y-10 lg:translate-y-32 mx-auto ">
+      <p className="animate-bounce text-white text-xl">Loading...</p>
+    
+   </div>
+    )}
+    <Link to="/">
+    <span className="px-3 py-1 text-white fixed lg:absolute lg:right-16 top-3 right-1 flex gap-1 font-bold items-center transition-all duration-300 ease-in-out hover:font-semibold">
+      <img src={arrowLeft} alt="arrow back" />
+      Back To Movies
+    </span>
+    </Link>
+    </>
   )
 }
 

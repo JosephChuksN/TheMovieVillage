@@ -13,7 +13,7 @@ const MovieDetails = ({
     spoken_languages
 }) => {
   return (
-    <div  className="text-white flex-wrap flex items-center gap-2 lg:gap-5 pb-3 border-b-[1px] text-sm lg:text-base border-gray-600">
+    <div key={id} className="text-white flex-wrap flex items-center gap-2 lg:gap-5 pb-3 border-b-[1px] text-sm lg:text-base border-gray-600">
     <span className="flex gap-2 items-center">
       <span>Status:</span>
       <span className="text-gray-400">{status}</span>
