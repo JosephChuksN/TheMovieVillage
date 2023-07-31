@@ -8,8 +8,9 @@ import axios from 'axios'
 import MovieDetails from '../components/MovieDetails'
 import arrowLeft from '../assets/arrowleft.svg'
 
+
 const Movie = () => {
-    
+
   const movie = useSelector((state)=> state.movieDetails)
 
   const {
@@ -38,7 +39,9 @@ const Movie = () => {
   const minutes = runtime%60
   
 
-const fetchMovieDetails = async () =>{
+  useEffect(()=>{
+
+    const fetchMovieDetails = async () =>{
     try {
       const data = await axios.get(`${process.env.REACT_APP_API_URL_DETAILS}${params.movieId}?api_key=${process.env.REACT_APP_API_KEY}`)
       dispatch(setSelectedMovie(data.data))
@@ -47,21 +50,18 @@ const fetchMovieDetails = async () =>{
       console.log(error)
     }
   }
-  useEffect(()=>{
     fetchMovieDetails()
-    
-
     return ()=>{
       dispatch(removeSelectedMovie())
     }
-  },[params.movieId])
+  },[])
 
 
     
   return (
     <>
     {movie? (
-      <div className="lg:w-4/5 w-full lg:items-start items-center lg:py-10 lg:px-5 px-3 py-1 mx-auto h-[100vh] flex lg:flex-row flex-col lg:gap-16 ">
+      <div className="lg:w-4/5 w-full lg:items-start items-center  lg:py-10 lg:px-5 px-3 translate-y-20 py-1 mx-auto h-[100vh] flex lg:flex-row flex-col lg:gap-16 ">
       <img className="lg:w-96 w-full lg:h-[85%] lg:rounded-xl lg:min-h-auto min-h-[55%] rounded "
       src={`https://image.tmdb.org/t/p/original${poster_path}`} 
       alt={movie.original_tittle} 
@@ -103,12 +103,6 @@ const fetchMovieDetails = async () =>{
     
    </div>
     )}
-    <Link to="/">
-    <span className="px-3 py-1 text-white fixed lg:absolute lg:right-16 top-3 right-1 flex gap-1 font-bold items-center transition-all duration-300 ease-in-out hover:font-semibold">
-      <img src={arrowLeft} alt="arrow back" />
-      Back To Movies
-    </span>
-    </Link>
     </>
   )
 }
