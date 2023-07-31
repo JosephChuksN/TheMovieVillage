@@ -40,3 +40,25 @@ export const clearSelectedGenres = ()=>{
         
     }
 }
+
+export const setFeaturedMovie = (featuredMovie) => {
+    return{
+        type: actionTypes.SET_FETURED_MOVIE,
+        payLoad: featuredMovie
+    }
+}
+
+export const setTrendingMovies = (trendingMovies) =>{
+    return {
+        type: actionTypes.SET_TRENDING_MOVIES,
+        payLoad: trendingMovies 
+    }
+}
+
+export const setTopratedMovies = (topratedMovies) =>{
+    
+    return {
+        type: actionTypes.SET_TOPRATED_MOVIES,
+        payLoad:topratedMovies
+    }
+}

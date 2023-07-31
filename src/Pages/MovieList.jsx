@@ -2,7 +2,6 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch  } from 'react-redux'
 import { setMovies } from '../redux/actions'
-import Header from '../components/Header'
 import MovieContainer from '../components/MovieContainer'
 import Buttons from '../components/Buttons'
 import MovieGenre from '../components/MovieGenre'
@@ -73,7 +72,7 @@ const MovieList = () => {
 
   return (
     <>
-    <Header />
+    
     <MovieGenre
         selectedGenre={selectedGenre}
         addGenre={addGenre}

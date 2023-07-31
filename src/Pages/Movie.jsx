@@ -8,8 +8,9 @@ import axios from 'axios'
 import MovieDetails from '../components/MovieDetails'
 import arrowLeft from '../assets/arrowleft.svg'
 
+
 const Movie = () => {
-    
+
   const movie = useSelector((state)=> state.movieDetails)
 
   const {
@@ -38,7 +39,9 @@ const Movie = () => {
   const minutes = runtime%60
   
 
-const fetchMovieDetails = async () =>{
+  useEffect(()=>{
+
+    const fetchMovieDetails = async () =>{
     try {
       const data = await axios.get(`${process.env.REACT_APP_API_URL_DETAILS}${params.movieId}?api_key=${process.env.REACT_APP_API_KEY}`)
       dispatch(setSelectedMovie(data.data))
@@ -47,14 +50,11 @@ const fetchMovieDetails = async () =>{
       console.log(error)
     }
   }
-  useEffect(()=>{
     fetchMovieDetails()
-    
-
     return ()=>{
       dispatch(removeSelectedMovie())
     }
-  },[params.movieId])
+  },[])
 
 
     

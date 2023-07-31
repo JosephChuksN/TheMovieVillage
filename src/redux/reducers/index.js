@@ -1,8 +1,13 @@
 import { combineReducers } from "redux";
-import { moviesReducers } from "./moviesReducer";
-import { selectedMovieReducer } from "./moviesReducer";
-import { genresReducer } from "./moviesReducer";
-import { selectedGenresReducer } from "./moviesReducer";
+import { moviesReducers,
+    selectedMovieReducer,
+    genresReducer,
+    selectedGenresReducer,
+    setFeturedMovieReducer,
+    trendingMoviesReducer,
+    topratedMoviesReducer
+} from "./moviesReducer";
+
 
 
 //combined reducers
@@ -10,7 +15,10 @@ import { selectedGenresReducer } from "./moviesReducer";
     allMovies : moviesReducers,
     movieDetails : selectedMovieReducer,
     allGenres: genresReducer,
-    selectedGenres: selectedGenresReducer
+    selectedGenres: selectedGenresReducer,
+    featuredMovie: setFeturedMovieReducer,
+    trendingMovies: trendingMoviesReducer,
+    topratedMovies:  topratedMoviesReducer
 })
 
 export default reducers;

@@ -2,19 +2,16 @@ import { actionTypes } from "../actionTypes";
 
 
 const initialState = {
-    movies:[]
-}
-const initialGenreState = {
-
-    genre:[]
-}
-
-const initialSelectedGenreState = {
-
-    gen:[]
+    movies:[],
+    genre:[],
+    gen:[], 
+    trending:[],
+    toprated:[]
 }
 
-export const  moviesReducers = (state = initialState, {type, payLoad}) =>{
+
+
+export const  moviesReducers = (state = initialState.movies, {type, payLoad}) =>{
 
     switch (type) {
         case actionTypes.SET_MOVIES :
@@ -37,7 +34,7 @@ export const selectedMovieReducer = (state = { }, {type, payLoad})=>{
     }
 }
 
-export const genresReducer = (state = initialGenreState, {type, payLoad}) =>{
+export const genresReducer = (state = initialState.genre, {type, payLoad}) =>{
        
      switch (type) {
         case actionTypes.SET_MOVIE_GENRES:
@@ -51,7 +48,7 @@ export const genresReducer = (state = initialGenreState, {type, payLoad}) =>{
      }
 }
 
-export const selectedGenresReducer = (state = initialSelectedGenreState, {type, payLoad})=>{
+export const selectedGenresReducer = (state = initialState.gen, {type, payLoad})=>{
 
     switch (type) {
         case actionTypes.SELECTED_GENRES:
@@ -59,7 +56,7 @@ export const selectedGenresReducer = (state = initialSelectedGenreState, {type, 
               gen:[...state.gen, payLoad]
             }
         case actionTypes.CLEAR_SELECTED_GENRE:
-            return  initialSelectedGenreState
+            return  initialState.gen
     
         default:
             return state
@@ -68,4 +65,34 @@ export const selectedGenresReducer = (state = initialSelectedGenreState, {type, 
     
 }
 
+export const setFeturedMovieReducer = (state = {}, {type, payLoad}) =>{
+    switch (type) {
+        case actionTypes.SET_FETURED_MOVIE:
+          return {...state, ...payLoad}
+            
+    
+        default:
+           return state
+    }
+}
 
+export const trendingMoviesReducer = (state = initialState.trending, { type, payLoad}) =>{
+     switch (type) {
+        case actionTypes.SET_TRENDING_MOVIES:
+            return {...state, trending:payLoad}
+           
+     
+        default:
+            return state
+     }
+}
+
+export const topratedMoviesReducer = (state = initialState.toprated, {type, payLoad}) => {
+    switch (type) {
+        case actionTypes.SET_TOPRATED_MOVIES:
+            return {...state, toprated:payLoad}
+    
+        default:
+            return state
+    }
+}
