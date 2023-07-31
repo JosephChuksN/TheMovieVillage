@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import logo from '../assets/tmv.png'
 
 const Header = () => {
    const navLinks = [
@@ -9,9 +10,10 @@ const Header = () => {
 
   return (
     <div className="py-5 fixed px-3 bg-[#ffffff06] backdrop-blur-sm z-40 text-white lg:px-40 w-full mx-auto flex justify-between items-center">
-        <p className="lg:px-5 text-md lg:text-3xl font-extrabold text-[#0047AB] ">The Movie Village</p>
+       <img className="w-16 h-9"
+       src={logo} alt="logo" />
 
-        <div className="flex gap-2 text-white lg:w-40 items-center justify-between">
+        <div className="flex gap-2 text-white w-2/5 lg:w-40 items-center justify-between">
           {navLinks.map(item=>(
             <NavLink className={({isActive})=> isActive? "text-[#0047AB] font-semibold" : ""}
             id={item.name} 
