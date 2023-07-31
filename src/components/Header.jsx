@@ -2,7 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Header = () => {
-   const navLinks = [{name:"Home", link:"/"}, {name:"Movies", link:"movielist"}]
+   const navLinks = [
+    {name:"Home", link:"/"}, 
+    {name:"Movies", link:"movielist"}
+  ]
 
   return (
     <div className="py-5 fixed px-3 bg-[#ffffff06] backdrop-blur-sm z-40 text-white lg:px-40 w-full mx-auto flex justify-between items-center">
